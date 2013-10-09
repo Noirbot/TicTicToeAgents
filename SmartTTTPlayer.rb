@@ -74,7 +74,7 @@ class SmartTTTPlayer
 
     chosen_space = rand(possible_moves.length)
     if @loud
-      puts "The center space is taken, so we just pick another space randomly: #{chosen_space}."
+      puts "The center space is taken, so we just pick another space randomly: #{possible_moves[chosen_space]}."
     end
 		possible_moves[chosen_space]
 	end
