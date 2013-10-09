@@ -14,7 +14,7 @@ class SmartTTTPlayer
 		open_spots = Array.new
 		board.each_with_index do |x, xi|
 			x.each_with_index do |y, yi|
-				if y == ""
+				if y == ''
 					open_spots.push(Coordinate.new(xi, yi))
 				end
 			end

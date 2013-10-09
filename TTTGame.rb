@@ -1,7 +1,7 @@
 class TTTGame
 	# Creates a blank board as a 2d array, ar well as all the other necessary variables.
 	def initialize()
-		@gameboard = [ ["", "", ""], ["", "", ""], ["", "", ""] ]
+		@game_board = [ ['', '', ''], ['', '', ''], ['', '', ''] ]
 		@has_winner = false
 		@winner = ''
 		@to_play = 'X'
@@ -22,8 +22,8 @@ class TTTGame
 	# Manages X's turn.
 	def turn_x?(x, y)
 		if not @has_winner and @to_play == 'X'
-			@gameboard = TTTGame.place(x, y, 'X', @gameboard)
-			@has_winner = TTTGame.won?(@gameboard)
+			@game_board = TTTGame.place(x, y, 'X', @game_board)
+			@has_winner = TTTGame.won?(@game_board)
 			if @has_winner
 				@winner = 'X'
 			else
@@ -37,17 +37,17 @@ class TTTGame
 
 	#Manages O's turn.
 	def turn_o?(x, y)
-		if not @has_winner and @to_play == "O"
-			@gameboard = TTTGame.place(x, y, "O", @gameboard)
-			@has_winner = TTTGame.won?(@gameboard)
+		if not @has_winner and @to_play == 'O'
+			@game_board = TTTGame.place(x, y, 'O', @game_board)
+			@has_winner = TTTGame.won?(@game_board)
 			if @has_winner
-				@winner = "O"
+				@winner = 'O'
 			else
-				@to_play = "X"
+				@to_play = 'X'
 			end
-			return true
+			true
 		else
-			return false
+			false
 		end
 	end
 
@@ -68,8 +68,8 @@ class TTTGame
 	end
 
 	# Getters.
-	def gameboard
-		@gameboard
+	def game_board
+		@game_board
 	end
 
 	def has_winner?
@@ -86,28 +86,28 @@ class TTTGame
 
 	# Returns the board as a nicely formatted string.
 	def board_string
-		output_string = ""
-		@gameboard.each_with_index do |x, xi|
-			x.each_with_index do |y, yi|
-				if y == ""
-					y = "-"
+		output_string = ''
+		@game_board.each do |x|
+			x.each do |y|
+				if y == ''
+					y = '-'
 				end
 				output_string += y
 			end
 			output_string += "\n"
 		end
-		return output_string
+		output_string
 	end
 
 	# Checking if the board is all full.
 	def is_full?
-		@gameboard.each do |x|
+		@game_board.each do |x|
 			x.each do |y|
 				if y == ""
 					return false
 				end
 			end
 		end
-		return true
+		true
 	end
 end
